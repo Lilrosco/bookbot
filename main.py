@@ -9,10 +9,22 @@ def get_book_text(path_to_file):
     return file_contents
 
 def main():
-    book_text = get_book_text("./books/frankenstein.txt")
-    num_of_words = count_words(book_text)
+    book_location = "./books/frankenstein.txt"
+    book_text = get_book_text(book_location)
 
-    print(f"{num_of_words} words found in the document")
-    print(count_characters(book_text))
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_location}")
+    print("----------- Word Count ----------")
+    num_of_words = count_words(book_text)
+    print(f"Found {num_of_words} total words")
+    print("--------- Character Count -------")
+    print(
+        pretty_print_character_stats(
+            sorted_character_stat(
+                count_characters(book_text)
+            )
+        )
+    )
+    print("============= END ===============")
 
 main()
